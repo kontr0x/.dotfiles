@@ -7,4 +7,7 @@ if command -v dconf &>/dev/null; then
 	dconf load /org/cinnamon/desktop/keybindings/ < $CONF_FILE
 else
 	echo "ERROR: dconf command not available, can't apply custom keybidns"
+	exit 1
 fi
+
+exit 0
