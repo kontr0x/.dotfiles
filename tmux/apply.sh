@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Backup and link tmux.conf
 dst=$HOME/.tmux.conf

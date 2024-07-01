@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Backup and link zshrc
 dst=$HOME/.zshrc

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Backup and link i3 config
 dst=$HOME/.config/i3/config
