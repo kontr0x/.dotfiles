@@ -27,5 +27,9 @@ fi
 
 unset rc
 
+# Enable zoxide
+eval "$(zoxide init zsh)"
+alias cd="z"
+
 # if using oh my zsh make sure to source everything BEFORE the oh-my-zsh.sh source
 source $ZSH/oh-my-zsh.sh
