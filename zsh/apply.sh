@@ -29,7 +29,6 @@ if [ ! -d $HOME/.oh-my-zsh ]; then
 fi
 
 __install_omz_plugin https://github.com/unixorn/fzf-zsh-plugin.git
-__install_omz_plugin https://github.com/marlonrichert/zsh-autocomplete.git
 __install_omz_plugin https://github.com/zsh-users/zsh-autosuggestions.git
 
 exit 0
