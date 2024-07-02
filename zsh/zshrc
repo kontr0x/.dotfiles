@@ -18,11 +18,13 @@ if [ "$TMUX" = "" ]; then tmux; fi
 
 # User specific aliases and functions
 if [ -d ~/.rc.d ]; then
-    for rc in ~/.rc.d/*.rc; do
-        if [ -f "$rc" ]; then
-            . "$rc"
-        fi
-    done
+  for rc in ~/.rc.d/*.rc; do
+    if [ -f "$rc" ]; then
+      . "$rc"
+    fi
+  done
+else
+  mkdir -p ~/.rc.d
 fi
 
 unset rc
