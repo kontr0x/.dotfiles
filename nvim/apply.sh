@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-git clone --quiet https://github.com/kontr0x/my-kickstart.nvim.git $HOME/.config/nvim
+dst=$HOME/.config/nvim
+if [ ! -d $dst ]; then
+    git clone --quiet https://github.com/kontr0x/my-kickstart.nvim.git $HOME/.config/nvim
+fi
 
 exit 0
