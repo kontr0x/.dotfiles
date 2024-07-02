@@ -12,7 +12,9 @@ else
 fi
 
 if command -v i3wsr $>/dev/null; then
-	echo "# Start i3wsr\nexec_always --no-startup-id $(which i3wsr)" | tee -a $dst
+	if ! grep -q -E 'exec_always --no-startup-id [a-zA-Z0-9\_\.\/\-]+/i3wsr' $dst; then
+		echo -e "# Start i3wsr\nexec_always --no-startup-id $(which i3wsr)" >> $dst
+	fi
 fi
 
 exit 0
