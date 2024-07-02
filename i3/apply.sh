@@ -11,4 +11,8 @@ else
 	exit 1
 fi
 
+if command -v i3wsr $>/dev/null; then
+	echo "# Start i3wsr\nexec_always --no-startup-id $(which i3wsr)" | tee -a $dst
+fi
+
 exit 0
