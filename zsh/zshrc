@@ -2,7 +2,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # oh my zsh settings
-plugins=(git)
+plugins=(git fzf-zsh-plugin zsh-autosuggestions)
 ZSH_THEME="sonicradish"
 ENABLE_CORRECTION="true"
 
@@ -18,20 +18,26 @@ if [ "$TMUX" = "" ]; then tmux; fi
 
 # User specific aliases and functions
 if [ -d ~/.rc.d ]; then
-  for rc in ~/.rc.d/*.rc; do
-    if [ -f "$rc" ]; then
-      . "$rc"
-    fi
-  done
+  if [ "$(ls -A ~/.rc.d)" ]; then
+    for rc in ~/.rc.d/*.rc; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+  fi
 else
   mkdir -p ~/.rc.d
+  touch ~/.rc.d/aliases.rc
 fi
 
 unset rc
 
-# Enable zoxide
-eval "$(zoxide init zsh)"
-alias cd="z"
+# Check if zoxide is installed
+if command -v zoxide &>/dev/null; then
+  # Enable zoxide
+  eval "$(zoxide init zsh)"
+  alias cd="z"
+fi
 
 # if using oh my zsh make sure to source everything BEFORE the oh-my-zsh.sh source
 source $ZSH/oh-my-zsh.sh

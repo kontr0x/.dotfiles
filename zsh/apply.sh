@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+source ../utils.sh
+
+## Helper functions
+#
 function __install_omz_plugin() {
 	git_repo=$1
 	plugin_name=$(sed -E 's/.*\/([a-zA-Z\-]+)\.git/\1/g' <<< $git_repo)
@@ -12,22 +16,18 @@ function __install_omz_plugin() {
 	fi
 }
 
-# Backup and link zshrc
-dst=$HOME/.zshrc
-if [ -f $dst ]; then
-	if [ ! -L "${dst}" ]; then
-		mv $dst "${dst}_bck_`date +%s`"
-	fi
-	ln -fs $(pwd)/zshrc $dst
-else
-	exit 1
-fi
+## Backup and link zshrc
+#
+bck_cfg_and_link $HOME/.zshrc zshrc
 
+## Setup oh-my-zsh
+#
 # Check if oh-my-zsh is installed, otherwise install it
 if [ ! -d $HOME/.oh-my-zsh ]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
-
+#
+# Install oh-my-zsh plugins
 __install_omz_plugin https://github.com/unixorn/fzf-zsh-plugin.git
 __install_omz_plugin https://github.com/zsh-users/zsh-autosuggestions.git
 
