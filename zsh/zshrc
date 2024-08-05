@@ -39,5 +39,9 @@ if command -v zoxide &>/dev/null; then
   alias cd="z"
 fi
 
+# Keyring fix
+export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+export GNOME_KEYRING_CONTROL=/run/user/1000/keyring
+
 # if using oh my zsh make sure to source everything BEFORE the oh-my-zsh.sh source
 source $ZSH/oh-my-zsh.sh
