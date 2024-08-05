@@ -199,3 +199,5 @@ exec --no-startup-id /usr/bin/gnome-keyring-daemon --start -c ssh,secrets,pkcs11
 # Required for copy paste stuff in a VM. Sometimes a restart does help in case of errors
 exec --no-startup-id vmware-user-suid-wrapper
 #
+# Start i3wsr
+exec_always --no-startup-id /home/user/.local/bin/i3wsr

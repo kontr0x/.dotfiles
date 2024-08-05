@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Local variables
+#
 CONF_FILE="dconf-kb-binds.conf"
 
 if command -v dconf &>/dev/null; then

@@ -24,3 +24,13 @@ function bck_cfg_and_link() {
 	fi
 	ln -fs $(pwd)/$cfg $dst
 }
+#
+function clone_git_repo() {
+	git_repo=$1
+	dst=$2
+	if [ ! -d $dst ]; then
+		git clone --quiet --depth 1 $git_repo $dst
+		# Change line ending to LF
+		dos2unix $dst/**/* --quiet
+	fi
+}
