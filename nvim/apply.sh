@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ../utils.sh
+
 ## Local variables
 #
 dst=$HOME/.config/nvim
