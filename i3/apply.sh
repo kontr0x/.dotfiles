@@ -18,4 +18,11 @@ if command -v $cmd &>/dev/null; then
 	add_i3_autostart $cmd "" $dst
 fi
 
+## Check if rofi is installed and replace the default dmenu with rofi
+#
+cmd="rofi"
+if command -v $cmd &>/dev/null; then
+	set_i3_keybind "mod+d" "$cmd" "-show drun -style sidebar -show-icons -icon-theme \"numix\"" $dst
+fi
+
 exit 0
