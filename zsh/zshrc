@@ -40,6 +40,7 @@ if command -v zoxide &>/dev/null; then
 fi
 
 # Keyring fix
+export SSH_AGENT_PID=`pidof ssh-agent`
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 export GNOME_KEYRING_CONTROL=/run/user/1000/keyring
 
