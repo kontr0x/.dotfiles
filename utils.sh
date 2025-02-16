@@ -24,15 +24,18 @@ function debug() {
 function bck_cfg_and_link() {
 	dst=$1
 	cfg=$2
-	if [ -f $dst ]; then
-		if [ ! -L $dst ]; then
-			backup_file_name="${dst}_bck_`date +%s`"
-			debug "Backing up $cfg to $backup_file_name"
-			mv $dst $backup_file_name
-			src="$(pwd)/${cfg}"
-			debug "Linking $src to $dst"
-			ln -fs $src $dst
+	# Check if the destination is not a symlink
+	if [ ! -L $dst ]; then
+		# Check if the destination exists
+		if [ -n $dst ]; then
+			# Backup the destination, whatever it is (file or directory)
+			backup_name="${dst}_backup_$(date +%s)"
+			debug "Backing up $cfg to $backup_name"
+			mv $dst $backup_name
 		fi
+		src="$(pwd)/${cfg}"
+		debug "Linking $src to $dst"
+		ln -fs $src $dst
 	fi
 }
 #
