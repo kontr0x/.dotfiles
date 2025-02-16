@@ -28,6 +28,15 @@ if [ -d ~/.rc.d ]; then
 else
   mkdir -p ~/.rc.d
   touch ~/.rc.d/aliases.rc
+  # Set up aliases.rc
+  echo "alias lla='ls -lha --color=auto'" >> ~/.rc.d/aliases.rc
+  echo "alias sshconfig='$EDITOR ~/.ssh/config'" >> ~/.rc.d/aliases.rc
+  echo "alias zshconfig='$EDITOR ~/.zshrc'" >> ~/.rc.d/aliases.rc
+  echo "alias aliases='$EDITOR ~/.rc.d/aliases.rc'" >> ~/.rc.d/aliases.rc
+  echo "alias custompaths='$EDITOR ~/.rc.d/custompaths.rc'" >> ~/.rc.d/aliases.rc
+  touch ~/.rc.d/custompaths.rc
+  # Set up custompaths.rc
+  echo -n "#Add local user directory\nexport PATH=\$PATH:~/.local/bin" >> ~/.rc.d/custompaths.rc
 fi
 
 unset rc
