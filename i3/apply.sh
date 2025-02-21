@@ -25,4 +25,26 @@ if command -v $cmd &>/dev/null; then
 	set_i3_keybind "mod+d" "$cmd" "-show drun -style sidebar -show-icons -icon-theme \"numix\"" $dst
 fi
 
+## Check if autorandr is installed and add it to i3 config
+#
+cmd="autorandr"
+if command -v $cmd &>/dev/null; then
+	# Cycle through available display configurations
+	set_i3_keybind "mod+p" "$cmd" "--cycle; nitrogen --restore" $dst
+	# Switch to internal display
+	set_i3_keybind "mod+Shift+p" "$cmd" "int; nitrogen --restore" $dst
+	# Turn off display
+	set_i3_keybind "mod+o" "$cmd" "off" $dst
+fi
+
+## Check if cinnamon-screensaver is installed and add it to i3 config
+#
+cmd="cinnamon-screensaver-command"
+if command -v $cmd &>/dev/null; then
+	# Lock screen
+	set_i3_keybind "mod+l" "$cmd" "-l" $dst
+	# Lock screen and turn off the display
+	set_i3_keybind "mod+Shift+l" "$cmd" "-l; xset dpms force off" $dst
+fi
+
 exit 0
