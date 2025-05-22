@@ -30,6 +30,7 @@ fi
 cmd="rofi"
 if command -v $cmd &>/dev/null; then
 	set_i3_keybind "mod+d" "$cmd" "-show drun -style sidebar -show-icons -icon-theme \"numix\"" $dst
+	set_i3_keybind "control+mod1+Delete" "$HOME/.config/rofi/powermenu.sh" "" $dst
 fi
 
 ## Check if autorandr is installed and add it to i3 config
