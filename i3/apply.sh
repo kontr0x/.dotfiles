@@ -57,4 +57,12 @@ if command -v $cmd &>/dev/null; then
 	set_i3_keybind "XF86MonBrightnessDown" "$cmd" "set 10%-" $dst
 fi
 
+## Check if flameshot is installed and add it to i3 config
+#
+cmd="flameshot"
+if command -v $cmd &>/dev/null; then
+	# Take a screenshot
+	set_i3_keybind "Print" "$cmd" "gui" $dst
+fi
+
 exit 0
