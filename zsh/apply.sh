@@ -2,6 +2,10 @@
 
 source ../utils.sh
 
+## Local variables
+#
+dst=$HOME/.zshrc
+
 ## Helper functions
 #
 function __install_omz_plugin() {
@@ -18,7 +22,17 @@ function __install_omz_plugin() {
 
 ## Backup and link zshrc
 #
-bck_cfg_and_link $HOME/.zshrc zshrc
+bck_cfg_and_link $dst zshrc
+
+## Check if gnome-keyring is installed and add it to zshrc
+#
+cmd="gnome-keyring-daemon"
+if command -v $cmd &>/dev/null; then
+	# Keyring fix
+	replace_or_append "export SSH_AGENT_PID" "export SSH_AGENT_PID=\$(pidof ssh-agent)" $dst  
+	replace_or_append "export SSH_AUTH_SOCK" "export SSH_AUTH_SOCK=\$(find /tmp -path '*/ssh-*' -name 'agent.*' -user $USER -print -quit 2>/dev/null)" $dst
+	replace_or_append "export GNOME_KEYRING_CONTROL" "export GNOME_KEYRING_CONTROL=\$(find /run/user/$(id -u) -name '*keyring*' -print -quit 2>/dev/null)" $dst
+fi
 
 ## Setup oh-my-zsh
 #
