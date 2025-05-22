@@ -47,4 +47,14 @@ if command -v $cmd &>/dev/null; then
 	set_i3_keybind "mod+Shift+l" "$cmd" "-l; xset dpms force off" $dst
 fi
 
+## Check if brightnessctl is installed and add it to i3 config
+#
+cmd="brightnessctl"
+if command -v $cmd &>/dev/null; then
+	# Increase brightness
+	set_i3_keybind "XF86MonBrightnessUp" "$cmd" "set +10%" $dst
+	# Decrease brightness
+	set_i3_keybind "XF86MonBrightnessDown" "$cmd" "set 10%-" $dst
+fi
+
 exit 0
