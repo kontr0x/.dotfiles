@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+## Check if cinnamon is the current desktop environment
+#
+if [ "$XDG_SESSION_DESKTOP" != "X-Cinnamon" ]; then
+	echo "ERROR: cinnamon is installed but not currently used, aborting"
+	exit 1
+fi
+
 ## Local variables
 #
 CONF_FILE="dconf-kb-binds.conf"

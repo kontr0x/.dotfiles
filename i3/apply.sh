@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+## Check if i3 is the current desktop environment
+#
+if [ "$XDG_SESSION_DESKTOP" != "i3" ]; then
+	echo "ERROR: i3 is installed but not currently used, aborting"
+	exit 1
+fi
+
 source ./utils.sh
 source ../utils.sh
 
