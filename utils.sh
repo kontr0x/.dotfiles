@@ -48,3 +48,20 @@ function clone_git_repo() {
 		dos2unix $dst/**/* --quiet
 	fi
 }
+
+function replace_or_append() {
+	match=$1
+	debug "match: $match"
+	replace=$2
+	debug "replace: $replace"
+	file_path=$3
+	debug "file_path: $file_path"
+	grep_match=$(grep "${match}" $file_path | sed '/^#/d')
+	if [[ -n "$grep_match" ]]; then
+		if [[ $(echo "$grep_match" | wc -l) -eq 1 ]]; then
+			sed -i --follow-symlinks "s/$grep_match/$replace/" $file_path
+		fi
+	else
+		echo -e "$replace" | tee -a $file_path &>/dev/null
+	fi
+}
