@@ -34,6 +34,13 @@ if command -v $cmd &>/dev/null; then
 	replace_or_append "export GNOME_KEYRING_CONTROL" "export GNOME_KEYRING_CONTROL=\$(find /run/user/$(id -u) -name '*keyring*' -print -quit 2>/dev/null)" $dst
 fi
 
+## Check if neovim is installed and replace the local editor with neovim
+#
+cmd="nvim"
+if command -v $cmd &>/dev/null; then
+	replace_or_append "export EDITOR='vim' # Local" "export EDITOR='$cmd' # Local" $dst
+fi
+
 ## Setup oh-my-zsh
 #
 # Check if oh-my-zsh is installed, otherwise install it
