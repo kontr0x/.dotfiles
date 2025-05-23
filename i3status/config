@@ -1,0 +1,67 @@
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "volume master"
+order += "battery all"
+order += "disk /"
+order += "load"
+order += "memory"
+order += "tztime local"
+
+wireless _first_ {
+        format_up = "W: %ip (%bitrate)"
+        format_down = "W: down"
+}
+
+ethernet _first_ {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+volume master {
+       format = "♪: %volume"
+       format_muted = "🔇 %volume"
+       device = "default"
+       mixer = "Master"
+       mixer_idx = 0
+}
+
+battery all {
+        # format = "%status %percentage %remaining %emptytime"
+        format = "%status %percentage"
+        format_down = "No battery"
+        status_chr = " CHR"
+        status_bat = "🔋 BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+disk "/" {
+        format = "💾 %avail"
+}
+
+load {
+        format = "🖥️ %1min"
+}
+
+memory {
+        format = "%available"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        align = "center"
+        format = "%Y-%m-%d (w%-V) %H:%M"
+}
+
