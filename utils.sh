@@ -27,7 +27,7 @@ function bck_cfg_and_link() {
 	# Check if the destination is not a symlink
 	if [ ! -L $dst ]; then
 		# Check if the destination exists
-		if [ -n $dst ]; then
+		if [ ! -f $dst ]; then
 			# Backup the destination, whatever it is (file or directory)
 			backup_name="${dst}_backup_$(date +%s)"
 			debug "Backing up $dst to $backup_name"
