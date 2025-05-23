@@ -30,7 +30,7 @@ function bck_cfg_and_link() {
 		if [ -n $dst ]; then
 			# Backup the destination, whatever it is (file or directory)
 			backup_name="${dst}_backup_$(date +%s)"
-			debug "Backing up $cfg to $backup_name"
+			debug "Backing up $dst to $backup_name"
 			mv $dst $backup_name
 		fi
 		src="$(pwd)/${cfg}"
