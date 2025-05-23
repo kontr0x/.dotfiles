@@ -20,7 +20,7 @@ function set_i3_keybind() {
 	cmd=$2
 	cmd_args=$3
 	config_path=$4
-	new_i3_keybind="bindsym \$$keybind exec $cmd $cmd_args"
+	new_i3_keybind="bindsym $keybind exec $cmd $cmd_args"
 	replace_or_append "$keybind" "$new_i3_keybind" $config_path
 	if [ $? -eq 0 ];then
 		positive "> Bound keybind $keybind to $cmd"
