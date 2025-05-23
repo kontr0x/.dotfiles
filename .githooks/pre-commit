@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+## Check if every apply.sh is executable
+#
+for file in $(find . -name "apply.sh"); do
+	if [ ! -x "$file" ]; then
+		echo "ERROR: $file is not executable"
+		exit 1
+	fi
+done
+
