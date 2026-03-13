@@ -1,7 +1,7 @@
 configuration {
   modes: "drun,ssh";
-  terminal: "foot";
-  ssh-command: "{terminal} --title={host} {ssh-client} {host} [-p {port}]";
+  terminal: "i3-sensible-terminal";
+  ssh-command: "{terminal} --title={host} -e {ssh-client} {host} [-p {port}]";
   window-thumbnail: true;
   timeout {
       action: "kb-cancel";
